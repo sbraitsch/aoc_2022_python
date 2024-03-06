@@ -1,6 +1,6 @@
 from file_parser import file_to_lines
 
-def solve_part_one(lines: list[str]):
+def solve_part_one(lines: list[str]) -> int:
     session_value = 0
     for line in lines:
         game_result = 0
@@ -14,7 +14,7 @@ def solve_part_one(lines: list[str]):
         session_value += game_result + (ord(line[2]) - b'W'[0])
     return session_value
 
-def solve_part_two(lines: list[str]):
+def solve_part_two(lines: list[str]) -> int:
     session_value = 0
     for line in lines:
         game_result = 0
