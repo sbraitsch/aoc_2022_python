@@ -1,10 +1,10 @@
-from file_parser import file_to_lines
+from util import file_to_lines
 
 
 def find_overlapping(lines: list[str], full: bool) -> int:
     acc = 0
     for line in lines:
-        split = line.split(',')
+        split = line.split(",")
         first = map_to_range(split[0])
         second = map_to_range(split[1])
         overlap = range(max(first[0], second[0]), min(first[-1], second[-1]) + 1)
@@ -17,7 +17,7 @@ def find_overlapping(lines: list[str], full: bool) -> int:
 
 
 def map_to_range(str_rep: str) -> range:
-    rng = str_rep.split('-')
+    rng = str_rep.split("-")
     return range(int(rng[0]), int(rng[1]) + 1)
 
 

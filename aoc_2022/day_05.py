@@ -1,7 +1,9 @@
-from file_parser import file_to_lines
+from util import file_to_lines
 
 
-def move_crates(moves: list[list[int]], stacks: list[list[str]], mover9001: bool) -> str:
+def move_crates(
+    moves: list[list[int]], stacks: list[list[str]], mover9001: bool
+) -> str:
     for amount, fr, to in moves:
         crates = stacks[fr][-amount:]
         if not mover9001:
@@ -9,7 +11,7 @@ def move_crates(moves: list[list[int]], stacks: list[list[str]], mover9001: bool
         stacks[fr] = stacks[fr][:-amount]
         stacks[to].extend(crates)
 
-    return ''.join([stack[-1] for stack in stacks])
+    return "".join([stack[-1] for stack in stacks])
 
 
 def solve_part_one(moves: list[list[int]], stacks: list[list[str]]) -> str:
@@ -33,7 +35,7 @@ if __name__ == "__main__":
 
     parsed_moves = []
     for move in moves:
-        split = move.split(' ')
+        split = move.split(" ")
         parsed_moves.append([int(split[1]), int(split[3]) - 1, int(split[5]) - 1])
 
     print(f"Part 1: {solve_part_one(parsed_moves, stacks.copy())}")

@@ -1,18 +1,20 @@
-from file_parser import file_to_lines
+from util import file_to_lines
+
 
 def solve_part_one(lines: list[str]) -> int:
     session_value = 0
     for line in lines:
         game_result = 0
         match line:
-            case 'A X' | 'B Y' | 'C Z':
+            case "A X" | "B Y" | "C Z":
                 game_result = 3
-            case 'A Z' | 'B X' | 'C Y':
+            case "A Z" | "B X" | "C Y":
                 game_result = 0
-            case 'A Y' | 'B Z' | 'C X':
+            case "A Y" | "B Z" | "C X":
                 game_result = 6
-        session_value += game_result + (ord(line[2]) - b'W'[0])
+        session_value += game_result + (ord(line[2]) - b"W"[0])
     return session_value
+
 
 def solve_part_two(lines: list[str]) -> int:
     session_value = 0
@@ -20,16 +22,16 @@ def solve_part_two(lines: list[str]) -> int:
         game_result = 0
         picks = []
         match line[2]:
-            case 'X':
+            case "X":
                 game_result = 0
                 picks = [3, 1, 2]
-            case 'Y':
+            case "Y":
                 game_result = 3
                 picks = [1, 2, 3]
-            case 'Z':
+            case "Z":
                 game_result = 6
                 picks = [2, 3, 1]
-        session_value += game_result + picks[ord(line[0]) - b'A'[0]]
+        session_value += game_result + picks[ord(line[0]) - b"A"[0]]
     return session_value
 
 

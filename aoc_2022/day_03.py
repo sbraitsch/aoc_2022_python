@@ -1,4 +1,4 @@
-from file_parser import file_to_lines
+from util import file_to_lines
 
 
 def get_value(c: str) -> int:
@@ -11,8 +11,8 @@ def get_value(c: str) -> int:
 def solve_part_one(lines: list[str]) -> int:
     acc = 0
     for line in lines:
-        first_comp = line[:len(line) // 2]
-        second_comp = line[len(line) // 2:]
+        first_comp = line[: len(line) // 2]
+        second_comp = line[len(line) // 2 :]
         for c in first_comp:
             if c in second_comp:
                 acc += get_value(c)
@@ -21,7 +21,7 @@ def solve_part_one(lines: list[str]) -> int:
 
 
 def solve_part_two(lines: list[str]) -> int:
-    chunks = [lines[i:i+3] for i in range(0, len(lines), 3)]
+    chunks = [lines[i : i + 3] for i in range(0, len(lines), 3)]
     acc = 0
     for chunk in chunks:
         for c in chunk[0]:
